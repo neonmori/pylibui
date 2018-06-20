@@ -24,24 +24,25 @@ def onClosing(window, data):
     libui.uiQuit()
     return 0
 
-# Keep reference to native C onClosing handler
-onclose = libui.uiWindowOnClosing(window, onClosing, None)
+if __name__ == '__main__':
+    # Keep reference to native C onClosing handler
+    onclose = libui.uiWindowOnClosing(window, onClosing, None)
 
-# Create box
-box = libui.uiNewVerticalBox()
-libui.uiBoxSetPadded(box, 1)
-libui.uiWindowSetChild(window, libui.uiControlPointer(box))
+    # Create box
+    box = libui.uiNewVerticalBox()
+    libui.uiBoxSetPadded(box, 1)
+    libui.uiWindowSetChild(window, libui.uiControlPointer(box))
 
-# Create label
-label = libui.uiNewLabel('Hello World')
-libui.uiBoxAppend(box, libui.uiControlPointer(label), 0)
+    # Create label
+    label = libui.uiNewLabel('Hello World')
+    libui.uiBoxAppend(box, libui.uiControlPointer(label), 0)
 
-# Show window
-control = libui.uiControlPointer(window)
-libui.uiControlShow(control)
+    # Show window
+    control = libui.uiControlPointer(window)
+    libui.uiControlShow(control)
 
-# Main loop
-libui.uiMain()
+    # Main loop
+    libui.uiMain()
 
-# Destroy
-libui.uiUninit()
+    # Destroy
+    libui.uiUninit()
